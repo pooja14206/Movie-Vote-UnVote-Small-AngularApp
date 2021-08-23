@@ -6,5 +6,30 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'flop-movie-list';
+  selectedIndex: number = -1;
+
+  voteFor(index: any){
+    if(this.isSelected(index)){
+      this.selectedIndex = -1;
+      }else{
+        this.selectedIndex = index;
+      }
+  }
+
+  isSelected(index: any){
+    return this.selectedIndex === index;
+  }
+
+  anySelected(){
+    return this.selectedIndex != -1;
+  }
+
+  getButtonText(index:any){
+    if(this.isSelected(index)){
+      return "Unvote";
+    }else{
+      return "Vote";
+    }
+  }
+  
 }
